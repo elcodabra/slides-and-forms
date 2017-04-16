@@ -1,0 +1,30 @@
+<div class="card" *ngIf="project">
+  <h4 class="card-header">{{ project.name }}</h4>
+  <div class="card-block">
+    <div class="slide-panel" *ngIf="project.content[slide_id]">
+      <div class="slide" *ngIf="project.content[slide_id].description" [innerHTML]="project.content[slide_id].description"></div>
+      <div class="form" *ngIf="project.content[slide_id].form">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Question</h4>
+            <div class="description" *ngIf="project.content[slide_id].form.description" [innerHTML]="project.content[slide_id].form.description"></div>
+            <fieldset class="form-group">
+              <legend>{{ project.content[slide_id].form.question }}</legend>
+              <div class="form-check" *ngFor="let variant of project.content[slide_id].form.variants; let i = index">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios{{i}}" value="{{i}}">
+                  {{ variant }}
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navigation-panel">
+      <a href="#" class="card-link">Presenter mode</a>
+      <a href="#" class="card-link">Previous</a>
+      <a href="#" class="card-link">Next</a>
+    </div>
+  </div>
+</div>
