@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Router } from "@angular/router";
+import { Http } from "@angular/http";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { DataService } from '../services/data.service';
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   weight = new FormControl('', Validators.required);
 
   constructor(private http: Http,
+              private router: Router,
               private dataService: DataService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder) { }
@@ -59,8 +61,9 @@ export class HomeComponent implements OnInit {
   }
 
   enableEditing(project) {
-    this.isEditing = true;
-    this.project = project;
+    this.router.navigate(['/edit', project._id]);
+    // this.isEditing = true;
+    // this.project = project;
   }
 
   cancelEditing() {

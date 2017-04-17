@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { DataService } from './services/data.service';
 import { ViewComponent } from './view/view.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HomeComponent,
     AboutComponent,
     ViewComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditComponent
   ],
   imports: [
     AppRoutingModule,

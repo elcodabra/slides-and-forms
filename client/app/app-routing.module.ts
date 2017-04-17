@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ViewComponent } from './view/view.component';
+import { EditComponent } from './edit/edit.component';
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   },
   { path: 'view/:project_id', redirectTo: 'view/:project_id/0', pathMatch: 'full' },
   { path: 'view/:project_id/:slide_id', component: ViewComponent },
+  { path: 'edit', component: EditComponent },
+  { path: 'edit/:project_id', component: EditComponent },
   { path: '', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
