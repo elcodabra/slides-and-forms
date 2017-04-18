@@ -1,7 +1,9 @@
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="card" *ngIf="project">
   <h4 class="card-header">{{ project._id ? "Edit project" : "Add new project" }}</h4>
   <div class="card-block">
-    <form #form="ngForm" (ngSubmit)="editProject(project)">
+    <form #form="ngForm">
       <div class="form-group row">
         <label for="name" class="col-2 col-form-label">Name:</label>
         <div class="col-10">
@@ -14,7 +16,7 @@
           <textarea class="form-control" id="content" name="content" [(ngModel)]="project.content" placeholder="Slide content"></textarea>
         </div>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> {{ project._id ? "Save" : "Add" }}</button>
+      <button class="btn btn-primary" [disabled]="!form.form.valid" (click)="editProject(project)"><i class="fa fa-floppy-o"></i> {{ project._id ? "Save" : "Add" }}</button>
     </form>
   </div>
 </div>
