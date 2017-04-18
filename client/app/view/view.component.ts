@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from "../services/data.service";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -14,6 +14,7 @@ export class ViewComponent implements OnInit {
   private project;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private dataService: DataService) { }
 
   ngOnInit() {
@@ -29,4 +30,11 @@ export class ViewComponent implements OnInit {
       );
   }
 
+  nextSlide() {
+    this.router.navigate(['../', this.slide_id + 1], { relativeTo: this.route })
+  }
+
+  previousSlide() {
+    this.router.navigate(['../', this.slide_id - 1], { relativeTo: this.route })
+  }
 }

@@ -22,9 +22,9 @@
       </div>
     </div>
     <div class="navigation-panel">
-      <a href="#" class="card-link">Presenter mode</a>
-      <a href="#" class="card-link">Previous</a>
-      <a href="#" class="card-link">Next</a>
+      <a href="javascript:void(0);" class="card-link">Presenter mode</a>
+      <a href="javascript:void(0);" class="card-link" *ngIf="slide_id > 0" (click)="previousSlide()">Previous</a>
+      <a href="javascript:void(0);" class="card-link" *ngIf="slide_id < project.content.length" (click)="nextSlide()">Next</a>
     </div>
   </div>
 </div>
