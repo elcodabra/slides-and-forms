@@ -11,7 +11,8 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  private project: { name: string, content: string } = { name: '', content: '' };
+  private slide_id: number = 0;
+  private project: { name: string, content: Array<any> } = { name: '', content: [{}] };
 
   constructor(private route: ActivatedRoute,
               public toast: ToastComponent,
@@ -21,16 +22,17 @@ export class EditComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => params['project_id'] ? this.dataService.getProject(params['project_id']) : Promise.reject("new object") )
       .subscribe(
-        data => { this.project = data; this.project.content = JSON.stringify(data.content); },
+        data => { this.project = data; this.project.content = data.content.map((item) => { item.form = JSON.stringify(item.form); return item; }) },
         error => console.log("project error:", error),
       );
   }
 
   editProject(project) {
-    project.content = JSON.parse(project.content);
+    /* TODO: remove JSON.parse and JSON.stringify */
+    project.content = project.content.map((item) => { item.form = JSON.parse(item.form); return item; });
     this.dataService.editProject(project).subscribe(
       res => {
-        project.content = JSON.stringify(project.content);
+        project.content = project.content.map((item) => { item.form = JSON.stringify(item.form); return item; });
         this.project = project;
         this.toast.setMessage('Project edited successfully.', 'success');
       },
@@ -39,6 +41,18 @@ export class EditComponent implements OnInit {
         this.toast.setMessage('error', 'error')
       }
     );
+  }
+
+  addSlide() {
+    this.project.content.push({ num: this.slide_id + 1 })
+  }
+
+  nextSlide() {
+    this.slide_id += 1
+  }
+
+  previousSlide() {
+    this.slide_id -= 1
   }
 
 }
