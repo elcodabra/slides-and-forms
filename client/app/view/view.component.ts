@@ -11,7 +11,7 @@ import 'rxjs/add/operator/switchMap';
 export class ViewComponent implements OnInit {
   private project_id: number;
   private slide_id: number;
-  private project;
+  project;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

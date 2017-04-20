@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class EditComponent implements OnInit {
   private slide_id: number = 0;
-  private project: { name: string, content: Array<any> } = { name: '', content: [{}] };
+  project: { name: string, content: Array<any> } = { name: '', content: [{}] };
 
   constructor(private route: ActivatedRoute,
               public toast: ToastComponent,
