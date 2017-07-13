@@ -57,4 +57,4 @@ Run `ng lint` to execute the linter via [TSLint](https://palantir.github.io/tsli
 ### Author
 * [Alexander Konovalov](https://github.com/sani-banani)
 
-Based on [Angular 2 Fullstack](https://github.com/DavideViolante/Angular-Full-Stack)
+Based on [Angular Fullstack](https://github.com/DavideViolante/Angular-Full-Stack)

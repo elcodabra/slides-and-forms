@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
@@ -14,6 +15,7 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(compression());
 
 app.use(morgan('dev'));
 
